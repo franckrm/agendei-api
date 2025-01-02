@@ -1,11 +1,9 @@
 import { Router } from "express";
+import controllerDoctor from "./controllers/controller.doctor.js";
 
 const router = Router();
 
 
-router.get("/doctors", (req , res)=>{
-    res.status(200).send("Aqui vamos listar os médicos");
-    
-});
+router.get("/doctors", controllerDoctor.Listar);
 
 export default router;
