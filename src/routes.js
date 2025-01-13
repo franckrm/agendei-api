@@ -5,5 +5,7 @@ const router = Router();
 
 
 router.get("/doctors", controllerDoctor.Listar);
+router.post("/doctors", controllerDoctor.Inserir);
+
 
 export default router;

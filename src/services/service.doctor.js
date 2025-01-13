@@ -1,7 +1,7 @@
 import repoDoctor from "../repositories/repository.doctor.js";
 
-async function Listar(){
-    const doctors = await repoDoctor.Listar();
+async function Listar(name){
+    const doctors = await repoDoctor.Listar(name);
     return doctors;
 }
 
