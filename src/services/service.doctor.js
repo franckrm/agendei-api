@@ -7,9 +7,15 @@ async function Listar(name){
 
 
 
-function Inserir(name, specialty, icon){
-    res.status(200).send("Aqui vamos listar os médicos");
+async function Inserir(name, specialty, icon){
+    const doctor = await repoDoctor.Inserir(name, specialty, icon);
+    return doctor;
+}
+
+async function Editar(id_doctor, name, specialty, icon){
+    const doctor = await repoDoctor.Editar(id_doctor, name, specialty, icon);
+    return doctor;
 }
 
 
-export default {Listar}
+export default {Listar, Inserir, Editar}
