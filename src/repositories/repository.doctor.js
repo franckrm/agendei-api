@@ -42,5 +42,16 @@ async function Editar(id_doctor, name, specialty, icon){
 }
 
 
+async function Excluir(id_doctor){
+    
+    let sql = `delete from doctors where id_doctor =?`;
 
-export default {Listar, Inserir, Editar}
+    await query(sql, [id_doctor]);
+
+    return id_doctor;
+}
+
+
+
+
+export default {Listar, Inserir, Editar, Excluir}
