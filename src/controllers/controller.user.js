@@ -11,12 +11,12 @@ async function Inserir(req,  res){
 
 async function Login(req,  res){
 
-    const {name, password } = req.body;
+    const {email, password } = req.body;
 
-    const user = await serviceUser.Login(name, password);
+    const user = await serviceUser.Login(email, password);
 
 
-    if(user.length == 0)
+    if(user.length == 0) 
         res.status(401).json({error: "Email ou senha inválida"});
     else 
         res.status(200).json(user);

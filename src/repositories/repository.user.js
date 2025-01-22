@@ -13,6 +13,21 @@ async function Inserir(name, email, password){
 }
 
 
+async function ListarByEmail(email){
+
+    let sql = `select * from users where email = ?`;
+
+    const user = await query(sql, [email]);
+
+    if(user.length == 0){
+        return [];
+    }else{
+        return user[0];
+    }
+
+    
+}
 
 
-export default {Inserir}
+
+export default {Inserir, ListarByEmail}
