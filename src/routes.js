@@ -1,6 +1,7 @@
 import { Router } from "express";
 import controllerDoctor from "./controllers/controller.doctor.js";
 import controllerUser from "./controllers/controller.user.js";
+import controllerAppointment from "./controllers/controller.appointment.js";
 import jwt from "./token.js"
 
 const router = Router();
@@ -15,10 +16,13 @@ router.get("/doctors/:id_doctor/services", jwt.ValidateToken, controllerDoctor.L
 
 router.post("/users/register", controllerUser.Inserir);
 router.post("/users/login", controllerUser.Login);
+router.post("/users/profile", jwt.ValidateToken, controllerUser.Profile);
 
 
 
-router.get("/appointments", jwt.ValidateToken, controllerAppointment.Listar);
+
+router.get("/appointments", jwt.ValidateToken, controllerAppointment.ListarByUser);
+router.post("/appointments", jwt.ValidateToken, controllerAppointment.Inserir);
 
 
 

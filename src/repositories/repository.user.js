@@ -29,5 +29,16 @@ async function ListarByEmail(email){
 }
 
 
+async function Profile(id_user){
+    
 
-export default {Inserir, ListarByEmail}
+    let sql = "select id_user, name, email from users where id_user = ?";
+    
+    const user = await query(sql, [id_user]);
+    return user[0];
+}
+
+
+
+
+export default {Inserir, ListarByEmail, Profile}
