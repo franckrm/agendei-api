@@ -17,21 +17,33 @@ order by a.booking_date, a.booking_hour`;
     return appointments;
 }
 
-async function Inserir(id_user, id_doctor, id_service, booking_date, booking_hou){
+async function Inserir(id_user, id_doctor, id_service, booking_date, booking_hour){
 
     let filtro = []
 
     let sql = `insert into appointments(id_user, id_doctor, id_service, booking_date, booking_hour)
     values(?, ?, ?,?,?)
-    returning id_appointment`;
+    returning id_appointment`; 
 
-    const appointment = await query(sql, [id_user, id_doctor, id_service, booking_date, booking_hou]);
+    const appointment = await query(sql, [id_user, id_doctor, id_service, booking_date, booking_hour]);
 
     return appointment[0];
+}
+
+async function Excluir(id_user, id_appointment){
+
+
+    let sql = `delete from appointments where id_appointment=? and id_user=? `;
+
+    await query(sql, [id_appointment, id_user]);
+
+    return {id_appointment};
 }
 
 
 
 
 
-export default {Listar, Inserir}
+
+
+export default {Listar, Inserir, Excluir}
