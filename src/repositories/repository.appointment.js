@@ -86,9 +86,9 @@ async function Inserir(id_user, id_doctor, id_service, booking_date, booking_hou
 async function Excluir(id_user, id_appointment){
 
 
-    let sql = `delete from appointments where id_appointment=? and id_user=? `;
+    let sql = `delete from appointments where id_appointment=?`;
 
-    await query(sql, [id_appointment, id_user]);
+    await query(sql, [id_appointment]);
 
     return {id_appointment};
 }
